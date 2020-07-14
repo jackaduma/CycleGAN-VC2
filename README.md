@@ -66,20 +66,11 @@ python train.py --logf0s_normalization ./cache/logf0s_normalization.npz --mcep_n
 
 example
 
-S0913
 
-<audio src="./data/S0913/BAC009S0913W0351.wav" controls="controls">
-Your browser does not support the audio tag.
-</audio>
+[S0913](./data/S0913/BAC009S0913W0351.wav)
 
-GaoXiaoSong
+[GaoXiaoSong](./data/gaoxiaosong/gaoxiaosong_1.wav)
 
-<audio src="./data/gaoxiaosong/gaoxiaosong_1.wav" controls="controls">
-Your browser does not support the audio tag.
-</audio>
 
-Converted (S0913 -> GaoXiaoSong)
 
-<audio src="./converted_sound/S0913/BAC009S0913W0351.wav" controls="controls">
-Your browser does not support the audio tag.
-</audio>
+[Converted (S0913 -> GaoXiaoSong)](./converted_sound/S0913/BAC009S0913W0351.wav)
