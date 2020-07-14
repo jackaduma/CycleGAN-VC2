@@ -68,18 +68,18 @@ example
 
 S0913
 
-<audio id="audio" controls="" preload="none">
-<source id="wav" src="./data/S0913/BAC009S0913W0351.wav">
+<audio src="./data/S0913/BAC009S0913W0351.wav" controls="controls">
+Your browser does not support the audio tag.
 </audio>
 
 GaoXiaoSong
 
-<audio id="audio" controls="" preload="none">
-<source id="wav" src="./data/gaoxiaosong/gaoxiaosong_1.wav">
+<audio src="./data/gaoxiaosong/gaoxiaosong_1.wav" controls="controls">
+Your browser does not support the audio tag.
 </audio>
 
 Converted (S0913 -> GaoXiaoSong)
 
-<audio id="audio" controls="" preload="none">
-<source id="wav" src="./converted_sound/S0913/BAC009S0913W0351.wav">
+<audio src="./converted_sound/S0913/BAC009S0913W0351.wav" controls="controls">
+Your browser does not support the audio tag.
 </audio>
