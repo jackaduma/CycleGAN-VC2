@@ -2,7 +2,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/jackaduma/CycleGAN-VC2)
 
-## **Voice Conversion by CycleGAN**
+------
 
 This code is implemented for [CycleGAN-VC2: Improved CycleGAN-based Non-parallel Voice Conversion](https://arxiv.org/abs/1904.04631])
 
@@ -20,7 +20,7 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
 
 ------
 
-### This repository contains:
+**This repository contains:** 
 
 1. [model code](model_tf.py) which implemented the paper.
 2. [audio preprocessing script](preprocess_training.py) you can use to create cache for [training data](data).
@@ -29,15 +29,12 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
 
 ------
 
-## Table of Contents
+## **Table of Contents**
 
 - [**CycleGAN-VC2**](#cyclegan-vc2)
-  - [**Voice Conversion by CycleGAN**](#voice-conversion-by-cyclegan)
   - [**CycleGAN-VC2**](#cyclegan-vc2-1)
     - [**Project Page**](#project-page)
-    - [This repository contains:](#this-repository-contains)
-  - [Table of Contents](#table-of-contents)
-  - [- License](#ullilicenseliul)
+  - [**Table of Contents**](#table-of-contents)
   - [**Requirement**](#requirement)
   - [**Usage**](#usage)
     - [**preprocess**](#preprocess)
@@ -45,7 +42,8 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
   - [**Pretrained**](#pretrained)
   - [**Demo**](#demo)
   - [**TodoList**](#todolist)
-  - [License](#license)
+  - [**License**](#license)
+  
 ------
 
 
@@ -116,6 +114,6 @@ Samples:
 
 ------
 
-## License
+## **License**
 
 [MIT](LICENSE) © Kun
