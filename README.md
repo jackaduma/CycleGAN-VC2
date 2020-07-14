@@ -16,12 +16,12 @@ This code is implemented for [CycleGAN-VC2: Improved CycleGAN-based Non-parallel
 ------
 ## TODO LIST
 - [x] Dataset
-  - [x] VC
-  - [x] Example
+  - [ ] VC
+  - [x] Chinese Male Speakers (S0913 from AISHELL-Speech & GaoXiaoSong: a Chinese star)
 - [x] Usage
   - [x] Training
-  - [x] Infer
-- [x] Demo
+  - [ ] Infer
+- [ ] Demo
 
 ------
 
@@ -63,3 +63,23 @@ python train.py --logf0s_normalization ./cache/logf0s_normalization.npz --mcep_n
 ------
 
 ## **Demo**
+
+example
+
+S0913
+
+<audio id="audio" controls="" preload="none">
+<source id="mp3" src="./data/S0913/BAC009S0913W0351.wav">
+</audio>
+
+GaoXiaoSong
+
+<audio id="audio" controls="" preload="none">
+<source id="mp3" src="./data/gaoxiaosong/gaoxiaosong_1.wav">
+</audio>
+
+Converted (S0913 -> GaoXiaoSong)
+
+<audio id="audio" controls="" preload="none">
+<source id="mp3" src="./converted_sound/S0913/BAC009S0913W0351.wav">
+</audio>
