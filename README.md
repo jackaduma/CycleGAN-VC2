@@ -67,10 +67,10 @@ python train.py --logf0s_normalization ./cache/logf0s_normalization.npz --mcep_n
 example
 
 
-[S0913](./data/S0913/BAC009S0913W0351.wav)
+[S0913(./data/S0913/BAC009S0913W0351.wav)](https://drive.google.com/file/d/14zU1mI8QtoBwb8cHkNdZiPmXI6Mj6pVW/view?usp=sharing)
 
-[GaoXiaoSong](./data/gaoxiaosong/gaoxiaosong_1.wav)
+[GaoXiaoSong(./data/gaoxiaosong/gaoxiaosong_1.wav)](https://drive.google.com/file/d/1s0ip6JwnWmYoWFcEQBwVIIdHJSqPThR3/view?usp=sharing)
 
 
 
-[Converted (S0913 -> GaoXiaoSong)](./converted_sound/S0913/BAC009S0913W0351.wav)
+[Converted from S0913 to GaoXiaoSong (./converted_sound/S0913/BAC009S0913W0351.wav)](https://drive.google.com/file/d/1S4vSNGM-T0RTo_aclxRgIPkUJ7NEqmjU/view?usp=sharing)
