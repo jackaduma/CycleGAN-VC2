@@ -15,10 +15,51 @@ This code is implemented for [CycleGAN-VC2: Improved CycleGAN-based Non-parallel
 
 ------
 ## TODO LIST
-- [ ] Dataset
-  - [ ] VC
-  - [ ] Example
+- [x] Dataset
+  - [x] VC
+  - [x] Example
 - [x] Usage
   - [x] Training
   - [x] Infer
-- [ ] Demo
+- [x] Demo
+
+------
+
+## **Usage**
+
+**requirement** 
+
+```bash
+pip install -r requirements.txt
+```
+
+**preprocess**
+
+```python
+python preprocess_training.py
+```
+is short for
+
+```python
+python preprocess_training.py --train_A_dir ./data/S0913/ --train_B_dir ./data/gaoxiaosong/ --cache_folder ./cache/
+```
+
+
+**train** 
+```python
+python train.py
+```
+
+is short for
+
+```python
+python train.py --logf0s_normalization ./cache/logf0s_normalization.npz --mcep_normalization ./cache/mcep_normalization.npz --coded_sps_A_norm ./cache/coded_sps_A_norm.pickle --coded_sps_B_norm ./cache/coded_sps_B_norm.pickle --model_checkpoint ./model_checkpoint/ --resume_training_at ./model_checkpoint/_CycleGAN_CheckPoint --validation_A_dir ./data/S0913/ --output_A_dir ./converted_sound/S0913 --validation_B_dir ./data/gaoxiaosong/ --output_B_dir ./converted_sound/gaoxiaosong/
+```
+
+------
+
+## **pretrained model**
+
+------
+
+## **Demo**
