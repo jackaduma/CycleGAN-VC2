@@ -8,7 +8,8 @@ This code is implemented for [CycleGAN-VC2: Improved CycleGAN-based Non-parallel
 
 ## [**Project Page**](http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/cyclegan-vc2/index.html)
 
-------
+To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an improved version of CycleGAN-VC incorporating three new techniques: an improved objective (two-step adversarial losses), improved generator (2-1-2D CNN), and improved discriminator (Patch GAN).
+
 
 ![network](http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/cyclegan-vc2/images/network.png "network")
 
@@ -17,10 +18,10 @@ This code is implemented for [CycleGAN-VC2: Improved CycleGAN-based Non-parallel
 ## TODO LIST
 - [x] Dataset
   - [ ] VC
-  - [x] Chinese Male Speakers (S0913 from AISHELL-Speech & GaoXiaoSong: a Chinese star)
+  - [x] Chinese Male Speakers (S0913 from [AISHELL-Speech](https://openslr.org/33/) & [GaoXiaoSong: a Chinese star](https://en.wikipedia.org/wiki/Gao_Xiaosong))
 - [x] Usage
   - [x] Training
-  - [ ] Infer
+  - [x] Example 
 - [ ] Demo
 
 ------
@@ -60,11 +61,15 @@ python train.py --logf0s_normalization ./cache/logf0s_normalization.npz --mcep_n
 
 ## **pretrained model**
 
+a pretrained model which converted between S0913 and GaoXiaoSong
+
+download from [Google Drive](https://drive.google.com/file/d/1iamizL98NWIPw4pw0nF-7b6eoBJrxEfj/view?usp=sharing) <735MB>
+
 ------
 
 ## **Demo**
 
-example
+Samples:
 
 
 [S0913(./data/S0913/BAC009S0913W0351.wav)](https://drive.google.com/file/d/14zU1mI8QtoBwb8cHkNdZiPmXI6Mj6pVW/view?usp=sharing)
