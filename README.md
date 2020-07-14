@@ -10,7 +10,7 @@ This code is implemented for [CycleGAN-VC2: Improved CycleGAN-based Non-parallel
 
 ## **CycleGAN-VC2**
 
-[**Project Page**](http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/cyclegan-vc2/index.html)
+### [**Project Page**](http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/cyclegan-vc2/index.html)
 
 To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an improved version of CycleGAN-VC incorporating three new techniques: an improved objective (two-step adversarial losses), improved generator (2-1-2D CNN), and improved discriminator (Patch GAN).
 
@@ -20,7 +20,7 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
 
 ------
 
-#### This repository contains:
+### This repository contains:
 
 1. [model code](model_tf.py) which implemented the paper.
 2. [audio preprocessing script](preprocess_training.py) you can use to create cache for [training data](data).
@@ -31,15 +31,21 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
 
 ## Table of Contents
 
-- [Requirement](#Requirement)
-- [Usage](#Usage)
-	- [preprocess](#preprocess)
-  - [train](#train)
-- [Pretrained](#Pretrained)
-- [Demo](#Demo)
-- [TodoList](#TodoList)
-- [Contributing](#contributing)
-- [License](#license)
+- [**CycleGAN-VC2**](#cyclegan-vc2)
+  - [**Voice Conversion by CycleGAN**](#voice-conversion-by-cyclegan)
+  - [**CycleGAN-VC2**](#cyclegan-vc2-1)
+    - [**Project Page**](#project-page)
+    - [This repository contains:](#this-repository-contains)
+  - [Table of Contents](#table-of-contents)
+  - [- License](#ullilicenseliul)
+  - [**Requirement**](#requirement)
+  - [**Usage**](#usage)
+    - [**preprocess**](#preprocess)
+    - [**train**](#train)
+  - [**Pretrained**](#pretrained)
+  - [**Demo**](#demo)
+  - [**TodoList**](#todolist)
+  - [License](#license)
 ------
 
 
@@ -51,7 +57,7 @@ pip install -r requirements.txt
 ```
 ## **Usage**
 
-**preprocess**
+### **preprocess**
 
 ```python
 python preprocess_training.py
@@ -63,7 +69,7 @@ python preprocess_training.py --train_A_dir ./data/S0913/ --train_B_dir ./data/g
 ```
 
 
-**train** 
+### **train** 
 ```python
 python train.py
 ```
