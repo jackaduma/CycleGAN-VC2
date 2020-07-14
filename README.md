@@ -69,17 +69,17 @@ example
 S0913
 
 <audio id="audio" controls="" preload="none">
-<source id="mp3" src="https://github.com/jackaduma/CycleGAN-VC2/blob/master/data/S0913/BAC009S0913W0351.wav">
+<source id="wav" src="./data/S0913/BAC009S0913W0351.wav">
 </audio>
 
 GaoXiaoSong
 
 <audio id="audio" controls="" preload="none">
-<source id="mp3" src="https://github.com/jackaduma/CycleGAN-VC2/blob/master/data/gaoxiaosong/gaoxiaosong_1.wav">
+<source id="wav" src="./data/gaoxiaosong/gaoxiaosong_1.wav">
 </audio>
 
 Converted (S0913 -> GaoXiaoSong)
 
 <audio id="audio" controls="" preload="none">
-<source id="mp3" src="https://github.com/jackaduma/CycleGAN-VC2/blob/master/converted_sound/S0913/BAC009S0913W0351.wav">
+<source id="wav" src="./converted_sound/S0913/BAC009S0913W0351.wav">
 </audio>
