@@ -1,10 +1,9 @@
-# **CycleGAN-VC2**
+# **CycleGAN-VC2-PyTorch**
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/jackaduma/CycleGAN-VC2)
 
-------
 
-This code is implemented for [CycleGAN-VC2: Improved CycleGAN-based Non-parallel Voice Conversion](https://arxiv.org/abs/1904.04631])
+This code is a **PyTorch** implementation for paper: [CycleGAN-VC2: Improved CycleGAN-based Non-parallel Voice Conversion](https://arxiv.org/abs/1904.04631]), a nice work on **Voice-Conversion**.
 
 ------
 
@@ -12,11 +11,11 @@ This code is implemented for [CycleGAN-VC2: Improved CycleGAN-based Non-parallel
 
 ### [**Project Page**](http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/cyclegan-vc2/index.html)
 
+
 To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an improved version of CycleGAN-VC incorporating three new techniques: an improved objective (two-step adversarial losses), improved generator (2-1-2D CNN), and improved discriminator (Patch GAN).
 
 
 ![network](http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/cyclegan-vc2/images/network.png "network")
-
 
 ------
 
@@ -31,8 +30,8 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
 
 ## **Table of Contents**
 
-- [**CycleGAN-VC2**](#cyclegan-vc2)
-  - [**CycleGAN-VC2**](#cyclegan-vc2-1)
+- [**CycleGAN-VC2-PyTorch**](#cyclegan-vc2-pytorch)
+  - [**CycleGAN-VC2**](#cyclegan-vc2)
     - [**Project Page**](#project-page)
   - [**Table of Contents**](#table-of-contents)
   - [**Requirement**](#requirement)
