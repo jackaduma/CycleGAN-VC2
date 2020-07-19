@@ -2,8 +2,17 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/jackaduma/CycleGAN-VC2)
 
+[**中文说明**](./README.zh-CN.md) | [**English**](./README.md)
 
 This code is a **PyTorch** implementation for paper: [CycleGAN-VC2: Improved CycleGAN-based Non-parallel Voice Conversion](https://arxiv.org/abs/1904.04631]), a nice work on **Voice-Conversion/Voice Cloning**.
+
+- [x] Dataset
+  - [ ] VC
+  - [x] Chinese Male Speakers (S0913 from [AISHELL-Speech](https://openslr.org/33/) & [GaoXiaoSong: a Chinese star](https://en.wikipedia.org/wiki/Gao_Xiaosong))
+- [x] Usage
+  - [x] Training
+  - [x] Example 
+- [ ] Demo
 
 ------
 
@@ -41,7 +50,6 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
   - [**Pretrained**](#pretrained)
   - [**Demo**](#demo)
   - [**Reference**](#reference)
-  - [**TodoList**](#todolist)
   - [**License**](#license)
   
 ------
@@ -109,17 +117,6 @@ Samples:
 3. Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks. [Paper](https://arxiv.org/abs/1703.10593), [Project](https://junyanz.github.io/CycleGAN/), [Code](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 4. Image-to-Image Translation with Conditional Adversarial Nets. [Paper](https://arxiv.org/abs/1611.07004), [Project](https://phillipi.github.io/pix2pix/), [Code](https://github.com/phillipi/pix2pix)
 
-------
-
-## **TodoList**
-
-- [x] Dataset
-  - [ ] VC
-  - [x] Chinese Male Speakers (S0913 from [AISHELL-Speech](https://openslr.org/33/) & [GaoXiaoSong: a Chinese star](https://en.wikipedia.org/wiki/Gao_Xiaosong))
-- [x] Usage
-  - [x] Training
-  - [x] Example 
-- [ ] Demo
 
 ------
 
