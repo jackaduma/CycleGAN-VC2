@@ -170,6 +170,10 @@ class CycleGANTraining(object):
 
                 d_fake_A = self.discriminator_A(fake_A)
                 d_fake_B = self.discriminator_B(fake_B)
+                
+                # for the second step adverserial loss
+                d_fake_cycle_A = self.discriminator_A(cycle_A)
+                d_fake_cycle_B = self.discriminator_B(cycle_B)
 
                 # Generator Cycle loss
                 cycleLoss = torch.mean(
@@ -182,9 +186,14 @@ class CycleGANTraining(object):
                 # Generator Loss
                 generator_loss_A2B = torch.mean((1 - d_fake_B) ** 2)
                 generator_loss_B2A = torch.mean((1 - d_fake_A) ** 2)
+                
+                # the second step adverserial loss
+                generator_loss_A2B_2nd = torch.mean((1 - d_fake_cycle_B) ** 2)
+                generator_loss_B2A_2nd = torch.mean((1 - d_fake_cycle_A) ** 2)
 
                 # Total Generator Loss
                 generator_loss = generator_loss_A2B + generator_loss_B2A + \
+                                 generator_loss_A2B_2nd + generator_loss_B2A_2nd + \
                                  cycle_loss_lambda * cycleLoss + identity_loss_lambda * identiyLoss
                 self.generator_loss_store.append(generator_loss.item())
 
