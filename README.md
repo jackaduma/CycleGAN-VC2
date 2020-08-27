@@ -16,6 +16,10 @@ This code is a **PyTorch** implementation for paper: [CycleGAN-VC2: Improved Cyc
 
 ------
 
+## **Update**
+
+**2020.08.27**: add the second step adverserial loss by [Jeffery-zhang-nfls](https://github.com/Jeffery-zhang-nfls)
+
 ## **CycleGAN-VC2**
 
 ### [**Project Page**](http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/cyclegan-vc2/index.html)
