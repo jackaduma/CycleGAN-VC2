@@ -5,11 +5,6 @@
 
 [**中文说明**](./README.zh-CN.md) | [**English**](./README.md)
 
-## Donation
-If this project help you reduce time to develop, you can give me a cup of coffee :) 
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/jackaduma?locale.x=zh_XC)
-
 ------
 
 This code is a **PyTorch** implementation for paper: [CycleGAN-VC2: Improved CycleGAN-based Non-parallel Voice Conversion](https://arxiv.org/abs/1904.04631]), a nice work on **Voice-Conversion/Voice Cloning**.
@@ -21,6 +16,7 @@ This code is a **PyTorch** implementation for paper: [CycleGAN-VC2: Improved Cyc
   - [x] Training
   - [x] Example 
 - [ ] Demo
+- [x] Reference
 
 ------
 
@@ -64,6 +60,7 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
   - [**Pretrained**](#pretrained)
   - [**Demo**](#demo)
   - [**Reference**](#reference)
+  - [**Donation**](#donation) 
   - [**License**](#license)
   
 ------
@@ -131,6 +128,12 @@ Samples:
 3. Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks. [Paper](https://arxiv.org/abs/1703.10593), [Project](https://junyanz.github.io/CycleGAN/), [Code](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix)
 4. Image-to-Image Translation with Conditional Adversarial Nets. [Paper](https://arxiv.org/abs/1611.07004), [Project](https://phillipi.github.io/pix2pix/), [Code](https://github.com/phillipi/pix2pix)
 
+------
+
+## Donation
+If this project help you reduce time to develop, you can give me a cup of coffee :) 
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/jackaduma?locale.x=zh_XC)
 
 ------
 
