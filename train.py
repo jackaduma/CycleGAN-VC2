@@ -16,7 +16,8 @@ from trainingDataset import trainingDataset
 from model_tf import Generator, Discriminator
 from tqdm import tqdm
 
-os.environ["CUDA_VISIBLE_DEVICES"]="3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+
 
 class CycleGANTraining(object):
     def __init__(self,
@@ -31,8 +32,8 @@ class CycleGANTraining(object):
                  output_B_dir,
                  restart_training_at=None):
         self.start_epoch = 0
-        self.num_epochs = 200000 # 5000
-        self.mini_batch_size = 1 # 1
+        self.num_epochs = 200000  # 5000
+        self.mini_batch_size = 1  # 1
         self.dataset_A = self.loadPickleFile(coded_sps_A_norm)
         self.dataset_B = self.loadPickleFile(coded_sps_B_norm)
         self.device = torch.device(
@@ -67,8 +68,8 @@ class CycleGANTraining(object):
                    list(self.discriminator_B.parameters())
 
         # Initial learning rates
-        self.generator_lr = 2e-4 # 0.0002
-        self.discriminator_lr = 1e-4 # 0.0001
+        self.generator_lr = 2e-4  # 0.0002
+        self.discriminator_lr = 1e-4  # 0.0001
 
         # Learning rate decay
         self.generator_lr_decay = self.generator_lr / 200000
@@ -140,7 +141,7 @@ class CycleGANTraining(object):
                                                        batch_size=self.mini_batch_size,
                                                        shuffle=True,
                                                        drop_last=False)
-            
+
             pbar = tqdm(enumerate(train_loader))
             for i, (real_A, real_B) in enumerate(train_loader):
                 num_iterations = (n_samples // self.mini_batch_size) * epoch + i
@@ -170,7 +171,7 @@ class CycleGANTraining(object):
 
                 d_fake_A = self.discriminator_A(fake_A)
                 d_fake_B = self.discriminator_B(fake_B)
-                
+
                 # for the second step adverserial loss
                 d_fake_cycle_A = self.discriminator_A(cycle_A)
                 d_fake_cycle_B = self.discriminator_B(cycle_B)
@@ -186,14 +187,9 @@ class CycleGANTraining(object):
                 # Generator Loss
                 generator_loss_A2B = torch.mean((1 - d_fake_B) ** 2)
                 generator_loss_B2A = torch.mean((1 - d_fake_A) ** 2)
-                
-                # the second step adverserial loss
-                generator_loss_A2B_2nd = torch.mean((1 - d_fake_cycle_B) ** 2)
-                generator_loss_B2A_2nd = torch.mean((1 - d_fake_cycle_A) ** 2)
 
                 # Total Generator Loss
                 generator_loss = generator_loss_A2B + generator_loss_B2A + \
-                                 generator_loss_A2B_2nd + generator_loss_B2A_2nd + \
                                  cycle_loss_lambda * cycleLoss + identity_loss_lambda * identiyLoss
                 self.generator_loss_store.append(generator_loss.item())
 
@@ -216,8 +212,16 @@ class CycleGANTraining(object):
                 generated_A = self.generator_B2A(real_B)
                 d_fake_A = self.discriminator_A(generated_A)
 
+                # for the second step adverserial loss
+                cycled_B = self.generator_A2B(generated_A)
+                d_cycled_B = self.discriminator_B(cycled_B)
+
                 generated_B = self.generator_A2B(real_A)
                 d_fake_B = self.discriminator_B(generated_B)
+
+                # for the second step adverserial loss
+                cycled_A = self.generator_B2A(generated_B)
+                d_cycled_A = self.discriminator_A(cycled_A)
 
                 # Loss Functions
                 d_loss_A_real = torch.mean((1 - d_real_A) ** 2)
@@ -228,8 +232,14 @@ class CycleGANTraining(object):
                 d_loss_B_fake = torch.mean((0 - d_fake_B) ** 2)
                 d_loss_B = (d_loss_B_real + d_loss_B_fake) / 2.0
 
-                # Final Loss for discriminator
-                d_loss = (d_loss_A + d_loss_B) / 2.0
+                # the second step adverserial loss
+                d_loss_A_cycled = torch.mean((0 - d_cycled_A) ** 2)
+                d_loss_B_cycled = torch.mean((0 - d_cycled_B) ** 2)
+                d_loss_A_2nd = (d_loss_A_real + d_loss_A_cycled) / 2.0
+                d_loss_B_2nd = (d_loss_B_real + d_loss_B_cycled) / 2.0
+
+                # Final Loss for discriminator with the second step adverserial loss
+                d_loss = (d_loss_A + d_loss_B) / 2.0 + (d_loss_A_2nd + d_loss_B_2nd) / 2.0
                 self.discriminator_loss_store.append(d_loss.item())
 
                 # Backprop for Discriminator
@@ -241,34 +251,37 @@ class CycleGANTraining(object):
                 #         self.discriminator_optimizer, name='discriminator')
 
                 self.discriminator_optimizer.step()
-                
-                if (i+1) % 2 == 0:
-                    pbar.set_description("Iter:{} Generator Loss:{:.4f} Discrimator Loss:{:.4f} GA2B:{:.4f} GB2A:{:.4f} G_id:{:.4f} G_cyc:{:.4f} D_A:{:.4f} D_B:{:.4f}".format(num_iterations, 
-                    generator_loss.item(), #loss['generator_loss'], 
-                    d_loss.item(), generator_loss_A2B, generator_loss_B2A, identiyLoss, cycleLoss, d_loss_A, d_loss_B))
-                    
-                    
-#                 if num_iterations % 50 == 0:
-#                     store_to_file = "Iter:{}\t Generator Loss:{:.4f} Discrimator Loss:{:.4f} \tGA2B:{:.4f} GB2A:{:.4f} G_id:{:.4f} G_cyc:{:.4f} D_A:{:.4f} D_B:{:.4f}".format(
-#                         num_iterations, generator_loss.item(), d_loss.item(), generator_loss_A2B, generator_loss_B2A,
-#                         identiyLoss, cycleLoss, d_loss_A, d_loss_B)
-#                     print(
-#                         "Iter:{}\t Generator Loss:{:.4f} Discrimator Loss:{:.4f} \tGA2B:{:.4f} GB2A:{:.4f} G_id:{:.4f} G_cyc:{:.4f} D_A:{:.4f} D_B:{:.4f}".format(
-#                             num_iterations, generator_loss.item(), d_loss.item(), generator_loss_A2B,
-#                             generator_loss_B2A, identiyLoss, cycleLoss, d_loss_A, d_loss_B))
-#                     self.store_to_file(store_to_file)
-                    
-#             end_time = time.time()
-#             store_to_file = "Epoch: {} Generator Loss: {:.4f} Discriminator Loss: {}, Time: {:.2f}\n\n".format(
-#                 epoch, generator_loss.item(), d_loss.item(), end_time - start_time_epoch)
-#             self.store_to_file(store_to_file)
-#             print("Epoch: {} Generator Loss: {:.4f} Discriminator Loss: {}, Time: {:.2f}\n\n".format(
-#                 epoch, generator_loss.item(), d_loss.item(), end_time - start_time_epoch))
+
+                if (i + 1) % 2 == 0:
+                    pbar.set_description(
+                        "Iter:{} Generator Loss:{:.4f} Discrimator Loss:{:.4f} GA2B:{:.4f} GB2A:{:.4f} G_id:{:.4f} G_cyc:{:.4f} D_A:{:.4f} D_B:{:.4f}".format(
+                            num_iterations,
+                            generator_loss.item(),
+                            # loss['generator_loss'],
+                            d_loss.item(), generator_loss_A2B, generator_loss_B2A, identiyLoss, cycleLoss, d_loss_A,
+                            d_loss_B))
+
+            #                 if num_iterations % 50 == 0:
+            #                     store_to_file = "Iter:{}\t Generator Loss:{:.4f} Discrimator Loss:{:.4f} \tGA2B:{:.4f} GB2A:{:.4f} G_id:{:.4f} G_cyc:{:.4f} D_A:{:.4f} D_B:{:.4f}".format(
+            #                         num_iterations, generator_loss.item(), d_loss.item(), generator_loss_A2B, generator_loss_B2A,
+            #                         identiyLoss, cycleLoss, d_loss_A, d_loss_B)
+            #                     print(
+            #                         "Iter:{}\t Generator Loss:{:.4f} Discrimator Loss:{:.4f} \tGA2B:{:.4f} GB2A:{:.4f} G_id:{:.4f} G_cyc:{:.4f} D_A:{:.4f} D_B:{:.4f}".format(
+            #                             num_iterations, generator_loss.item(), d_loss.item(), generator_loss_A2B,
+            #                             generator_loss_B2A, identiyLoss, cycleLoss, d_loss_A, d_loss_B))
+            #                     self.store_to_file(store_to_file)
+
+            #             end_time = time.time()
+            #             store_to_file = "Epoch: {} Generator Loss: {:.4f} Discriminator Loss: {}, Time: {:.2f}\n\n".format(
+            #                 epoch, generator_loss.item(), d_loss.item(), end_time - start_time_epoch)
+            #             self.store_to_file(store_to_file)
+            #             print("Epoch: {} Generator Loss: {:.4f} Discriminator Loss: {}, Time: {:.2f}\n\n".format(
+            #                 epoch, generator_loss.item(), d_loss.item(), end_time - start_time_epoch))
 
             if epoch % 2000 == 0 and epoch != 0:
                 end_time = time.time()
                 store_to_file = "Epoch: {} Generator Loss: {:.4f} Discriminator Loss: {}, Time: {:.2f}\n\n".format(
-                epoch, generator_loss.item(), d_loss.item(), end_time - start_time_epoch)
+                    epoch, generator_loss.item(), d_loss.item(), end_time - start_time_epoch)
                 self.store_to_file(store_to_file)
                 print("Epoch: {} Generator Loss: {:.4f} Discriminator Loss: {}, Time: {:.2f}\n\n".format(
                     epoch, generator_loss.item(), d_loss.item(), end_time - start_time_epoch))
@@ -443,10 +456,8 @@ class CycleGANTraining(object):
         self.generator_loss_store = checkPoint['generator_loss_store']
         self.discriminator_loss_store = checkPoint['discriminator_loss_store']
         return epoch
-    
-    
-    
-    
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="Train CycleGAN using source dataset and target dataset")
@@ -457,7 +468,7 @@ if __name__ == '__main__':
     coded_sps_B_norm = './cache/coded_sps_B_norm.pickle'
     model_checkpoint = './model_checkpoint/'
     resume_training_at = './model_checkpoint/_CycleGAN_CheckPoint'
-#     resume_training_at = None
+    #     resume_training_at = None
 
     validation_A_dir_default = './data/S0913/'
     output_A_dir_default = './converted_sound/S0913'
@@ -517,4 +528,3 @@ if __name__ == '__main__':
                                 output_B_dir=output_B_dir,
                                 restart_training_at=resume_training_at)
     cycleGAN.train()
-
