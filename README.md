@@ -133,9 +133,14 @@ Samples:
 ## Donation
 If this project help you reduce time to develop, you can give me a cup of coffee :) 
 
+AliPay(支付宝)
 <div align="center">
-	<img src="./misc/ali_pay.png" alt="ali_pay" width="400"/>
-    <img src="./misc/wechat_pay.png" alt="wechat_pay" width="400">
+	<img src="./misc/ali_pay.png" alt="ali_pay" width="400" />
+</div>
+
+WechatPay(微信)
+<div align="center">
+    <img src="./misc/wechat_pay.png" alt="wechat_pay" width="400" />
 </div>
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/jackaduma?locale.x=zh_XC)
