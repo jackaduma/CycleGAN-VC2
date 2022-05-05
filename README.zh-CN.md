@@ -49,8 +49,9 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
     - [**训练**](#训练)
   - [**预训练模型**](#预训练模型)
   - [**Demo**](#demo)
+  - [**Star-History**](#star-history)
   - [**引用**](#引用)
-  - [**捐赠**](#捐赠) 
+  - [捐赠](#捐赠)
   - [**License**](#license)
   
 ------
@@ -109,6 +110,12 @@ download from [Google Drive](https://drive.google.com/file/d/1iamizL98NWIPw4pw0n
 
 
 **说话人A的语音转换为说话人B的音色**: [Converted from S0913 to GaoXiaoSong (./converted_sound/S0913/BAC009S0913W0351.wav)](https://drive.google.com/file/d/1S4vSNGM-T0RTo_aclxRgIPkUJ7NEqmjU/view?usp=sharing)
+
+------
+
+## **Star-History**
+
+![star-history](https://api.star-history.com/svg?repos=jackaduma/CycleGAN-VC2&type=Date "star-history")
 
 ------
 
