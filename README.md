@@ -50,6 +50,7 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
 ## **Table of Contents**
 
 - [**CycleGAN-VC2-PyTorch**](#cyclegan-vc2-pytorch)
+  - [**Update**](#update)
   - [**CycleGAN-VC2**](#cyclegan-vc2)
     - [**Project Page**](#project-page)
   - [**Table of Contents**](#table-of-contents)
@@ -59,8 +60,9 @@ To advance the research on non-parallel VC, we propose CycleGAN-VC2, which is an
     - [**train**](#train)
   - [**Pretrained**](#pretrained)
   - [**Demo**](#demo)
+  - [**Star-History**](#star-history)
   - [**Reference**](#reference)
-  - [**Donation**](#donation) 
+  - [Donation](#donation)
   - [**License**](#license)
   
 ------
@@ -119,6 +121,11 @@ Samples:
 
 
 **speaker A's speech changes to speaker B's voice:** [Converted from S0913 to GaoXiaoSong (./converted_sound/S0913/BAC009S0913W0351.wav)](https://drive.google.com/file/d/1S4vSNGM-T0RTo_aclxRgIPkUJ7NEqmjU/view?usp=sharing)
+
+------
+## **Star-History**
+
+![star-history](https://api.star-history.com/svg?repos=jackaduma/CycleGAN-VC2&type=Date "star-history")
 
 ------
 
