@@ -6,6 +6,8 @@
 
 本项目使用**PyTorch**复现论文：[CycleGAN-VC2: Improved CycleGAN-based Non-parallel Voice Conversion](https://arxiv.org/abs/1904.04631]), 在**音色转换/声音克隆**方面非常优秀的算法模型.
 
+本项目使用CycleGAN实现语音转换（Voice Conversion），即将一个人的语音转换成另一个人的语音，或将男性的语音转换成女性的语音，反之亦然。CycleGAN是一种基于对抗生成网络（GAN）的模型，它可以自动学习如何将两个不同领域的数据进行转换，例如将照片转换成艺术作品。在这个项目中，CycleGAN被用来学习两个不同人的语音之间的映射关系，从而实现语音转换。该项目的实现基于PyTorch框架，同时使用了Mel-spectrogram特征提取和WaveNet声码器来生成转换后的语音。
+
 - [x] 数据集
   - [ ] VC
   - [x] 中文男性说话人(S0913 from [AISHELL-Speech](https://openslr.org/33/) & [GaoXiaoSong: a Chinese star](https://en.wikipedia.org/wiki/Gao_Xiaosong))
