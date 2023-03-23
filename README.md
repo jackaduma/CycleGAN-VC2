@@ -7,7 +7,7 @@
 
 ------
 
-This code is a **PyTorch** implementation for paper: [CycleGAN-VC2: Improved CycleGAN-based Non-parallel Voice Conversion](https://arxiv.org/abs/1904.04631]), a nice work on **Voice-Conversion/Voice Cloning**.
+This code is a **PyTorch** implementation for paper: [CycleGAN-VC2: Improved CycleGAN-based Non-parallel Voice Conversion](https://arxiv.org/abs/1904.04631), a nice work on **Voice-Conversion/Voice Cloning**.
 
 - [x] Dataset
   - [ ] VC
