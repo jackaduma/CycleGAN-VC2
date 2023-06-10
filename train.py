@@ -3,20 +3,22 @@
 # Author: kun
 # @Time: 2019-07-23 14:25
 
-import os
-import numpy as np
 import argparse
-import torch
-import time
-import librosa
+import os
 import pickle
+import time
 
-import preprocess
-from trainingDataset import trainingDataset
-from model_tf import Generator, Discriminator
+import librosa
+import numpy as np
+import soundfile as sf
+import torch
 from tqdm import tqdm
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+import preprocess
+from model_tf import Generator, Discriminator
+from trainingDataset import trainingDataset
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 class CycleGANTraining(object):
@@ -355,9 +357,9 @@ class CycleGANTraining(object):
                                                                 ap=ap,
                                                                 fs=sampling_rate,
                                                                 frame_period=frame_period)
-            librosa.output.write_wav(path=os.path.join(output_A_dir, os.path.basename(file)),
-                                     y=wav_transformed,
-                                     sr=sampling_rate)
+            sf.write(os.path.join(output_A_dir, os.path.basename(file)),
+                     wav_transformed,
+                     sampling_rate)
 
     def validation_for_B_dir(self):
         num_mcep = 36
@@ -408,9 +410,9 @@ class CycleGANTraining(object):
                                                                 ap=ap,
                                                                 fs=sampling_rate,
                                                                 frame_period=frame_period)
-            librosa.output.write_wav(path=os.path.join(output_B_dir, os.path.basename(file)),
-                                     y=wav_transformed,
-                                     sr=sampling_rate)
+            sf.write(os.path.join(output_B_dir, os.path.basename(file)),
+                     wav_transformed,
+                     sampling_rate)
 
     def savePickle(self, variable, fileName):
         with open(fileName, 'wb') as f:
@@ -467,8 +469,8 @@ if __name__ == '__main__':
     coded_sps_A_norm = './cache/coded_sps_A_norm.pickle'
     coded_sps_B_norm = './cache/coded_sps_B_norm.pickle'
     model_checkpoint = './model_checkpoint/'
-    resume_training_at = './model_checkpoint/_CycleGAN_CheckPoint'
-    #     resume_training_at = None
+    # resume_training_at = './model_checkpoint/_CycleGAN_CheckPoint'
+    resume_training_at = None
 
     validation_A_dir_default = './data/S0913/'
     output_A_dir_default = './converted_sound/S0913'
