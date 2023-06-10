@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 # Author: kun
 # @Time: 2019-07-23 14:26
-
+from functools import partial
+from multiprocessing import Pool
 
 import librosa
 import numpy as np
@@ -11,6 +12,8 @@ import pyworld
 from pprint import pprint
 import librosa.display
 import time
+
+from tqdm import tqdm
 
 
 def load_wavs(wav_dir, sr):
@@ -53,24 +56,20 @@ def world_encode_spectral_envelop(sp, fs, dim=24):
     return coded_sp
 
 
-def world_encode_data(wave, fs, frame_period=5.0, coded_dim=24):
-    f0s = list()
-    timeaxes = list()
-    sps = list()
-    aps = list()
-    coded_sps = list()
-    for wav in wave:
-        f0, timeaxis, sp, ap = world_decompose(wav=wav,
-                                               fs=fs,
-                                               frame_period=frame_period)
-        coded_sp = world_encode_spectral_envelop(sp=sp, fs=fs, dim=coded_dim)
-        f0s.append(f0)
-        timeaxes.append(timeaxis)
-        sps.append(sp)
-        aps.append(ap)
-        coded_sps.append(coded_sp)
-    return f0s, timeaxes, sps, aps, coded_sps
+def world_encode_single_data(wav, fs, frame_period, coded_dim):
+    f0, timeaxis, sp, ap = world_decompose(wav=wav,
+                                           fs=fs,
+                                           frame_period=frame_period)
+    coded_sp = world_encode_spectral_envelop(sp=sp, fs=fs, dim=coded_dim)
+    return f0, timeaxis, sp, ap, coded_sp
 
+
+def world_encode_data(wave, fs, frame_period=5.0, coded_dim=24):
+    wrapped = partial(world_encode_single_data, fs=fs, frame_period=frame_period, coded_dim=coded_dim)
+    with Pool(32) as pool:
+        ret = list(tqdm(pool.imap(wrapped, wave), total=len(wave)))
+
+    return list(map(list, zip(*ret)))
 
 def logf0_statistics(f0s):
     # Note: np.ma.log() calculating log on masked array (for incomplete or invalid entries in array)
